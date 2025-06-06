@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="CarePoint Physio offers expert physiotherapy services including cupping therapy, dry needling, and pain management." />
+  <title>CarePoint Physio - Professional Physiotherapy Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    /* Animation Definitions */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideInLeft {
+      from { transform: translateX(-100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-20px); }
+      60% { transform: translateY(-10px); }
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    /* Animation Classes */
+    .fade-in {
+      animation: fadeIn 1s ease-in forwards;
+    }
+    
+    .slide-in {
+      animation: slideInLeft 1s ease-out forwards;
+    }
+    
+    .bounce {
+      animation: bounce 1s;
+    }
+    
+    .pulse:hover {
+      animation: pulse 1s infinite;
+    }
+    
+    /* Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f9fafb;
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      display: flex;
+      min-height: 100vh;
+      opacity: 0;
+      animation: fadeIn 0.8s ease-in forwards;
+    }
+    
+    a {
+      color: #0073e6;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    a:hover, a:focus {
+      color: #005bb5;
+      outline: none;
+    }
+    
+    /* Sidebar styling */
+    .sidebar {
+      width: 280px;
+      background-color: #004a99;
+      color: white;
+      padding: 2rem 1.5rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      animation: slideInLeft 0.8s ease-out;
+    }
+    
+    .sidebar h2 {
+      color: white;
+      margin: 0 0 1.5rem 0;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid rgba(255,255,255,0.2);
+      font-size: 1.5rem;
+    }
+    
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    
+    .sidebar-nav a {
+      color: white;
+      background-color: rgba(255,255,255,0.1);
+      padding: 0.8rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    
+    .sidebar-nav a:hover,
+    .sidebar-nav a:focus {
+      background-color: rgba(255,255,255,0.2);
+      transform: translateX(8px);
+    }
+    
+    .sidebar-nav a i {
+      font-size: 1.1rem;
+    }
+    
+    /* Main content wrapper */
+    .content-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Header styling */
+    header {
+      background-color: #fff;
+      padding: 1rem 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    header h1 {
+      color: #004a99;
+      margin: 0;
+      font-weight: 700;
+      font-size: 2.2rem;
+      text-align: center;
+      animation: fadeIn 1s ease-in 0.3s forwards;
+      opacity: 0;
+    }
+    
+    header p {
+      font-style: italic;
+      color: #555;
+      margin: 0.3rem 0 0;
+      font-size: 1.1rem;
+      text-align: center;
+      animation: fadeIn 1s ease-in 0.5s forwards;
+      opacity: 0;
+    }
+    
+    /* Main content layout */
+    main {
+      max-width: 1000px;
+      margin: 2rem auto 4rem;
+      padding: 0 2rem;
+    }
+    
+    h2, h3, h4 {
+      color: #004a99;
+      margin-bottom: 0.8rem;
+    }
+    
+    h2 {
+      font-size: 2rem;
+      border-bottom: 3px solid #0073e6;
+      padding-bottom: 0.5rem;
+      margin-top: 2.5rem;
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out 0.6s forwards;
+    }
+    
+    h3 {
+      font-size: 1.6rem;
+      margin-top: 2rem;
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out 0.7s forwards;
+    }
+    
+    h4 {
+      font-size: 1.3rem;
+      margin-top: 1.5rem;
+    }
+    
+    p {
+      margin-bottom: 1.2rem;
+      font-size: 1.05rem;
+    }
+    
+    /* Image container for side-by-side */
+    .image-row {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+    
+    .image-container {
+      flex: 1 1 300px;
+      max-width: 100%;
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    
+    .image-container:hover,
+    .image-container:focus {
+      transform: translateY(-5px);
+    }
+    
+    .image-container img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .image-container figcaption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,74,153,0.8);
+      color: white;
+      padding: 0.8rem;
+      text-align: center;
+      font-weight: 500;
+    }
+    
+    /* Single image styling */
+    .single-image {
+      margin: 2rem auto;
+      max-width: 600px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    
+    .single-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    /* Pricing table */
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    
+    .pricing-table th, 
+    .pricing-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .pricing-table th {
+      background-color: #004a99;
+      color: white;
+      font-weight: 500;
+    }
+    
+    .pricing-table tr:nth-child(even) {
+      background-color: #f2f6fa;
+    }
+    
+    .pricing-table tr:hover {
+      background-color: #e6f0f7;
+    }
+    
+    /* Contact info */
+    .contact-info {
+      background: #f2f6fa;
+      padding: 2rem;
+      border-radius: 10px;
+      margin: 2rem 0;
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    
+    .contact-info p {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    
+    .contact-info a {
+      font-weight: 500;
+    }
+    
+    /* Button with animation */
+    .animated-button {
+      padding: 12px 24px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 1rem 0;
+      display: inline-block;
+    }
+    
+    .animated-button:hover {
+      background-color: #45a049;
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    /* Staggered animations */
+    .staggered-item {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+    
+    .staggered-item:nth-child(1) { animation-delay: 0.3s; }
+    .staggered-item:nth-child(2) { animation-delay: 0.5s; }
+    .staggered-item:nth-child(3) { animation-delay: 0.7s; }
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      body {
+        flex-direction: column;
+      }
+      
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 1.5rem;
+      }
+      
+      .sidebar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .sidebar-nav a {
+        padding: 0.8rem 1.2rem;
+      }
+      
+      main {
+        margin: 1.5rem auto 3rem;
+        padding: 0 1.5rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+      }
+      
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      h2 {
+        font-size: 1.7rem;
+      }
+      
+      h3 {
+        font-size: 1.4rem;
+      }
+      
+      .sidebar-nav {
+        gap: 0.6rem;
+      }
+      
+      .sidebar-nav a {
+        padding: 0.6rem 1rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .sidebar-nav {
+        flex-direction: column;
+      }
+      
+      .image-row {
+        flex-direction: column;
+      }
+      
+      .image-container {
+        flex: 1 1 100%;
+      }
+      
+      main {
+        padding: 0 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>Quick Links</h2>
+    <nav class="sidebar-nav" aria-label="Secondary navigation">
+      <a href="#about" class="staggered-item"><i class="fas fa-info-circle"></i> About Us</a>
+      <a href="#services" class="staggered-item"><i class="fas fa-hand-holding-medical"></i> Our Services</a>
+      <a href="#pricing" class="staggered-item"><i class="fas fa-tag"></i> Treatment Costs</a>
+      <a href="#contact" class="staggered-item"><i class="fas fa-address-book"></i> Contact Info</a>
+      <a href="tel:9266802502" class="staggered-item"><i class="fas fa-phone-alt"></i> Call Now</a>
+      <a href="mailto:nk08482792@gmail.com" class="staggered-item"><i class="fas fa-envelope"></i> Email Us</a>
+    </nav>
+  </aside>
+
+  <!-- Main content wrapper -->
+  <div class="content-wrapper">
+    <header>
+      <h1>CarePoint Physio</h1>
+      <p>"Healing Through Motion, Guided by Experts"</p>
+    </header>
+
+    <main id="main-content">
+      <section id="about">
+        <h2>About Us</h2>
+        <p>At Care Point Physiotherapist, we are dedicated to enhancing your well-being through personalized and compassionate care. Our team of experienced and certified physiotherapists is committed to helping you regain mobility, reduce pain, and achieve optimal physical health.</p>
+        <p>Whether recovering from an injury, managing a chronic condition, or improving your overall fitness, we combine advanced techniques with a patient-centered approach to create tailored treatment plans. At Care Point, we believe in empowering you with the knowledge and tools to take charge of your health and lead a pain-free life. Your journey to wellness starts here!</p>
+        <p>Our modern facility is equipped with the latest therapeutic technologies, and we continuously update our techniques through professional development to ensure you receive the most effective care available.</p>
+        
+        
+      </section>
+
+      <section id="services">
+        <h2>Our Services</h2>
+
+        <h3>Cupping Therapy</h3>
+        <p>We offer specialized cupping therapy to promote healing and relieve muscle tension. Our certified practitioners use both traditional and modern techniques to address various conditions:</p>
+        <div class="image-row">
+          <figure class="image-container" style="animation-delay: 0.4s;">
+            <img src="dry cupping1.avif" alt="Dry cupping therapy">
+            <figcaption>Dry Cupping Therapy</figcaption>
+          </figure>
+          <figure class="image-container" style="animation-delay: 0.6s;">
+            <img src="bc2.jpg" alt="Blood cupping therapy">
+            <figcaption>Blood Cupping Therapy</figcaption>
+          </figure>
+        </div>
+
+        <h3>Dry Needling</h3>
+        <p>Our dry needling service is performed by certified practitioners to target myofascial trigger points effectively. This treatment helps with:</p>
+        <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem;">
+          <li style="margin-bottom: 0.5rem;">Muscle pain relief</li>
+          <li style="margin-bottom: 0.5rem;">Improved range of motion</li>
+          <li style="margin-bottom: 0.5rem;">Reduced muscle tension</li>
+          <li>Enhanced recovery from injuries</li>
+        </ul>
+        <div class="single-image" style="animation-delay: 0.5s;">
+          <img src="dn1.jpg" alt="Dry needling therapy">
+        </div>
+
+        <h3>Sciatica Treatment</h3>
+        <p>Our comprehensive sciatica treatment program combines multiple therapeutic approaches to relieve nerve compression and restore normal function:</p>
+        <div class="single-image" style="animation-delay: 0.5s;">
+          <img src="sc2.webp" alt="Sciatica treatment">
+        </div>
+
+        <h3>Neck Pain Management</h3>
+        <p>We specialize in treating neck pain caused by poor posture, stress, or injury. Our neck pain program includes:</p>
+        <div class="image-row">
+          <figure class="image-container" style="animation-delay: 0.4s;">
+            <img src="np1.webp" alt="Neck pain treatment">
+            
+          </figure>
+        </div>
+
+        <h3>Migraine</h3>
+        <p>We manage migraines by reducing neck pain and muscle tension, potentially decreasing attack frequency and severity. These include stretches, strengthening exercises, and mind-body techniques.</p>
+        <div class="image-row">
+          <figure class="image-row" style="animation-delay: 0.4s;">
+            <img src="migraine.jpeg">
+            
+          </figure>
+        </div>
+
+        <h3>Back Pain</h3>
+        <p>Our back pain rehabilitation program is designed to strengthen core muscles, improve flexibility, and correct postural imbalances:</p>
+        <div class="image-row">
+          <figure class="image-row" style="animation-delay: 0.4s;">
+            <img src="bp2.jpeg" >
+            
+        </div>
+
+        <h3>Cervical</h3>
+        <p>Cervical pain, or neck pain, is pain in the neck area, often extending into the shoulders or arms. It can range from mild discomfort to debilitating pain, affecting daily activities and quality of life.</p>
+        <div class="image-row">
+          <figure class="image-row" style="animation-delay: 0.1s;">
+            <img src="cervical.jpeg" >
+            
+          </figure>
+        </div>
+
+        <h3>Paralysis</h3>
+        <p>Help restore movement, strength, and independence in individuals with paralysis. Through targeted exercises and therapies, it improves muscle function, mobility, and pain management while preventing complications. The goal is to enhance quality of life and maximize recovery.</p>
+        <div class="image-row">
+          <figure class="image-row" style="animation-delay: 0.1s;">
+            <img src="para.jpeg">
+            
+          </figure>
+        </div>
+      </section>
+
+      <section id="pricing">
+        <h2>Treatment Costs</h2>
+        <p>We offer competitive pricing for all our services. Here's an overview of our standard rates:</p>
+        
+        <table class="pricing-table" style="animation-delay: 0.4s;">
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Initial Consultation</td>
+              <td>₹299</td>
+            </tr>
+            <tr>
+              <td>Standard Physio Session</td>
+              <td>₹799</td>
+            </tr>
+            
+          </tbody>
+        </table>
+        
+        <p style="margin-top: 1.5rem;"><strong>Note:</strong> All treatments are priced per session and delivered by certified physiotherapists using evidence-based techniques. Costs vary based on your personalized treatment plan.</p>
+        
+        
+      </section>
+
+      <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-info" style="animation-delay: 0.4s;">
+          <h3>Get in Touch</h3>
+          <p><i class="fas fa-map-marker-alt"></i> <strong>Home services available.</strong></p>
+          <p><i class="fas fa-phone-alt"></i> <strong>Phone:</strong> <a href="tel:9266802502">+91 92668 02502</a></p>
+          <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:nk0848279@gmail.com">nk0848279@gmail.com</a></p>
+        </div>
+        
+        <h3>Book an Appointment</h3>
+        <p>Ready to start your journey to better health? Call us directly or send us a message to schedule your consultation.</p>
+        
+        
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Animate sidebar navigation items on load
+    document.addEventListener('DOMContentLoaded', function() {
+      const navItems = document.querySelectorAll('.sidebar-nav a');
+      navItems.forEach((item, index) => {
+        item.style.animationDelay = `${0.1 + index * 0.1}s`;
+        item.style.animation = 'fadeIn 0.8s ease-out forwards';
+      });
+      
+      // Add scroll animations
+      const animateOnScroll = function() {
+        const elements = document.querySelectorAll('.image-container, .single-image, .pricing-table, .contact-info');
+        const windowHeight = window.innerHeight;
+        
+        elements.forEach(element => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const elementVisible = 150;
+          
+          if (elementPosition < windowHeight - elementVisible) {
+            element.style.animation = 'fadeIn 0.8s ease-out forwards';
+          }
+        });
+      };
+      
+      // Run once on page load
+      animateOnScroll();
+      
+      // Set up scroll event listener
+      window.addEventListener('scroll', animateOnScroll);
+      
+      
+  </script>
+</body>
+</html>
